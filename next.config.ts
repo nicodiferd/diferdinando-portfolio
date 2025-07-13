@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Remove static export for Cloudflare Pages
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
