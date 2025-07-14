@@ -1,6 +1,6 @@
 Correct Cloudflare Build Settings:
 
-  - Root directory: diferdinando-portfolio
+  - Root directory: N/A
   - Build command: npm run pages:build
   - Build output directory: .vercel/output/static
 
