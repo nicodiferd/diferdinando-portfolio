@@ -60,3 +60,6 @@ The site is configured for Cloudflare Pages deployment:
 - **Animation**: framer-motion for page transitions
 - **Styling**: Tailwind CSS v4 with PostCSS
 - **Deployment**: @cloudflare/next-on-pages, wrangler
+
+## Deployment Status
+Last deployment: January 13, 2025 - Cloudflare Pages
