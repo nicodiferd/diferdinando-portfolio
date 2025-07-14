@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   title: "DiFerdinando Brothers - Full-Stack Development & Data Engineering",
   description: "Professional software development services specializing in web applications, mobile apps, data engineering, cybersecurity, and AI solutions.",
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: '/favicon.ico?v=2',
+    shortcut: '/favicon.ico?v=2',
     apple: '/apple-icon.png',
   },
 };
