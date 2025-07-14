@@ -80,7 +80,7 @@ export const teamMembers: TeamMember[] = [
     name: "Nicolo DiFerdinando",
     role: "Security Engineer & Full-Stack Developer",
     specialties: ["Cybersecurity", "Web Development", "Database Design", "IoT"],
-    bio: "22-year-old Industrial Engineering student at Cal Poly San Luis Obispo with a focus on cybersecurity. CompTIA Security+ and SPLUNK certified with expertise in network security, SQL databases, and process improvement.",
+    bio: "23-year-old Industrial Engineering student at Cal Poly San Luis Obispo with a focus on cybersecurity. CompTIA Security+ and SPLUNK certified with expertise in network security, SQL databases, and process improvement.",
     linkedin: "https://www.linkedin.com/in/nicolo-diferdinando/",
     github: "https://github.com/nicodiferd",
     website: "https://nicolod.org",
