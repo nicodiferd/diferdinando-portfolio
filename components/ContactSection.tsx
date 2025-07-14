@@ -47,10 +47,10 @@ const ContactSection = () => {
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-blue-500" />
                 <a 
-                  href="mailto:contact@diferdinando.dev" 
+                  href="mailto:contact@diferdinando.com" 
                   className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
-                  contact@diferdinando.dev
+                  contact@diferdinando.com
                 </a>
               </div>
             </div>
