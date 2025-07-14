@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "DiFerdinando Brothers - Full-Stack Development & Data Engineering",
   description: "Professional software development services specializing in web applications, mobile apps, data engineering, cybersecurity, and AI solutions.",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
 };
 
 export default function RootLayout({
