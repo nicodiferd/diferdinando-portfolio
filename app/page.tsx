@@ -16,10 +16,10 @@ export default function Home() {
         <ProjectsSection />
         <ContactSection />
       </main>
-      <footer className="bg-gray-100 dark:bg-gray-900 py-8">
+      <footer className="bg-black border-t border-zinc-800 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-600 dark:text-gray-400">
-            © 2024 DiFerdinando Brothers. All rights reserved.
+          <p className="text-gray-400">
+            © 2024 <span className="gradient-text">DiFerdinando Brothers</span>. All rights reserved.
           </p>
         </div>
       </footer>

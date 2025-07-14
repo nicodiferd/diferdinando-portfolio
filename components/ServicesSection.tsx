@@ -15,8 +15,10 @@ const iconMap: { [key: string]: any } = {
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-20 bg-black relative">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,7 +29,7 @@ const ServicesSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">Our Services</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Comprehensive technology solutions tailored to your business needs
           </p>
         </motion.div>
@@ -42,23 +44,23 @@ const ServicesSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all"
+                whileHover={{ scale: 1.02 }}
+                className="card-glow rounded-xl p-8 border border-zinc-800 hover:border-zinc-700 transition-all duration-300 group cursor-pointer"
               >
-                <div className="flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg mb-4">
-                  <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-red-600/20 to-blue-600/20 rounded-lg mb-6 group-hover:scale-110 transition-transform">
+                  <Icon className="w-7 h-7 text-red-500 group-hover:text-blue-500 transition-colors" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <h3 className="text-xl font-semibold mb-3 text-white">{service.title}</h3>
+                <p className="text-gray-400 mb-6">
                   {service.description}
                 </p>
                 <ul className="space-y-2">
                   {service.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-start text-sm text-gray-500 dark:text-gray-400"
+                      className="flex items-start text-sm text-gray-500"
                     >
-                      <span className="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                      <span className="text-red-500 mr-2">•</span>
                       {feature}
                     </li>
                   ))}

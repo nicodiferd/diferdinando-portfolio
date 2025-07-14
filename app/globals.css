@@ -4,18 +4,66 @@
   html {
     scroll-behavior: smooth;
   }
+  
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+    --card: #0a0a0a;
+    --card-foreground: #ffffff;
+    --primary: #dc2626;
+    --primary-foreground: #ffffff;
+    --secondary: #2563eb;
+    --secondary-foreground: #ffffff;
+    --muted: #171717;
+    --muted-foreground: #a3a3a3;
+    --accent: #dc2626;
+    --accent-foreground: #ffffff;
+    --border: #262626;
+  }
+  
+  body {
+    @apply bg-black text-white;
+  }
 }
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent;
+  }
+  
+  .gradient-text-alt {
+    @apply bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent;
   }
   
   .gradient-border {
     @apply relative;
-    background: linear-gradient(var(--background), var(--background)) padding-box,
-                linear-gradient(to right, #3b82f6, #9333ea) border-box;
+    background: linear-gradient(#000000, #000000) padding-box,
+                linear-gradient(to right, #dc2626, #2563eb) border-box;
     border: 2px solid transparent;
+  }
+  
+  .card-glow {
+    @apply relative overflow-hidden;
+    background: linear-gradient(145deg, #0a0a0a 0%, #171717 100%);
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.1), 0 0 60px rgba(37, 99, 235, 0.05);
+  }
+  
+  .button-glow-red {
+    @apply relative overflow-hidden;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.5), inset 0 0 20px rgba(220, 38, 38, 0.1);
+  }
+  
+  .button-glow-blue {
+    @apply relative overflow-hidden;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.5), inset 0 0 20px rgba(37, 99, 235, 0.1);
+  }
+  
+  .text-glow-red {
+    text-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+  }
+  
+  .text-glow-blue {
+    text-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
   }
 }
 
@@ -34,6 +82,24 @@
   }
 }
 
+@keyframes pulse-red {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes pulse-blue {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
 }
@@ -44,4 +110,12 @@
 
 .animation-delay-4000 {
   animation-delay: 4s;
+}
+
+.animate-pulse-red {
+  animation: pulse-red 4s infinite;
+}
+
+.animate-pulse-blue {
+  animation: pulse-blue 4s infinite;
 }
