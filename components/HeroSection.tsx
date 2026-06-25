@@ -1,107 +1,114 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowDown, Code, Database, Shield, Cpu } from 'lucide-react';
+
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+const techStack = ['Next.js', 'Rust', 'TypeScript', 'Snowflake', 'dbt', 'Python', 'GCP'];
 
 const HeroSection = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
-      {/* Animated background shapes with red/blue theme */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-600 rounded-full mix-blend-screen filter blur-3xl animate-pulse-red" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-3xl animate-pulse-blue animation-delay-2000" />
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-red-600 rounded-full mix-blend-screen filter blur-3xl animate-pulse-red animation-delay-4000" />
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black"
+    >
+      {/* Single, restrained ambient glow */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-[-15%] h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.14),transparent_70%)] blur-3xl" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-black" />
       </div>
-      
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 opacity-20" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 60 0 L 0 0 0 60' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`
-      }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="gradient-text">DiFerdinando Brothers</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Full-Stack Development • Data Engineering • Cybersecurity • AI Solutions
-          </p>
-          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
-            Two brothers combining expertise in security, data, and software development to build 
-            innovative solutions for modern businesses.
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <a
-                href="#projects"
-                className="inline-flex items-center px-8 py-4 bg-red-600 text-white font-medium rounded-lg transition-all duration-300 button-glow-red hover:bg-red-700 hover:scale-105"
-              >
-                View Our Work
-              </a>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <a
-                href="#contact"
-                className="inline-flex items-center px-8 py-4 border-2 border-blue-500 text-blue-500 font-medium rounded-lg transition-all duration-300 hover:bg-blue-500/10 hover:scale-105 hover:border-blue-400"
-              >
-                Get In Touch
-              </a>
-            </motion.div>
-          </div>
+      {/* Faint dot grid, masked toward the center */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.18) 1px, transparent 0)',
+          backgroundSize: '34px 34px',
+          maskImage:
+            'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%)',
+          WebkitMaskImage:
+            'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%)',
+        }}
+      />
 
-          {/* Tech icons */}
-          <div className="flex justify-center items-center gap-8 mb-12">
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
-              className="text-gray-400 hover:text-red-500 transition-colors"
-            >
-              <Code className="w-8 h-8" />
-            </motion.div>
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
-              className="text-gray-400 hover:text-red-500 transition-colors"
-            >
-              <Database className="w-8 h-8" />
-            </motion.div>
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
-              className="text-gray-400 hover:text-red-500 transition-colors"
-            >
-              <Shield className="w-8 h-8" />
-            </motion.div>
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
-              className="text-gray-400 hover:text-red-500 transition-colors"
-            >
-              <Cpu className="w-8 h-8" />
-            </motion.div>
-          </div>
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center"
+      >
+        {/* Eyebrow */}
+        <motion.div variants={item} className="mb-8 flex justify-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/60 px-3.5 py-1.5 text-sm text-zinc-400 backdrop-blur">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75 motion-reduce:animate-none" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+            </span>
+            Available for new projects
+          </span>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        {/* Headline */}
+        <motion.h1
+          variants={item}
+          className="text-balance text-4xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl"
         >
-          <ArrowDown className="w-6 h-6 text-gray-500" />
+          DiFerdinando Brothers
+        </motion.h1>
+
+        {/* Subhead */}
+        <motion.p
+          variants={item}
+          className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-zinc-400 sm:text-xl"
+        >
+          Two engineers building production-grade software, data platforms, and
+          security automation for teams that need them to actually work.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          variants={item}
+          className="mt-10 flex flex-wrap items-center justify-center gap-3"
+        >
+          <a
+            href="#projects"
+            className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
+          >
+            View our work
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-lg border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-200 transition-colors hover:border-zinc-500 hover:bg-zinc-900"
+          >
+            Get in touch
+          </a>
         </motion.div>
-      </div>
+
+        {/* Tech strip */}
+        <motion.div variants={item} className="mt-16">
+          <p className="text-xs uppercase tracking-[0.2em] text-zinc-600">Building with</p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-zinc-500">
+            {techStack.map((tech) => (
+              <span key={tech}>{tech}</span>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

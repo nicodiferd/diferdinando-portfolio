@@ -13,7 +13,8 @@ export interface Project {
   link?: string;
   github?: string;
   image?: string;
-  category: 'web' | 'mobile' | 'data' | 'security' | 'ai';
+  category: 'web' | 'mobile' | 'data' | 'security' | 'ai' | 'infrastructure';
+  featured?: boolean;
 }
 
 export interface TeamMember {

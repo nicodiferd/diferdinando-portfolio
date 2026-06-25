@@ -1,16 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Globe, Smartphone, Database, BarChart3, Brain, Shield } from 'lucide-react';
+import { Globe, Database, BarChart3, Brain, Shield, Cloud } from 'lucide-react';
 import { services } from '@/lib/data';
 
 const iconMap: { [key: string]: any } = {
   globe: Globe,
-  smartphone: Smartphone,
   database: Database,
   chart: BarChart3,
   brain: Brain,
   shield: Shield,
+  cloud: Cloud,
 };
 
 const ServicesSection = () => {

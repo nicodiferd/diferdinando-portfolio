@@ -2,75 +2,75 @@ import { Service, TeamMember, Project } from '@/types';
 
 export const services: Service[] = [
   {
-    title: "Web Applications",
-    description: "Modern, scalable web applications built with cutting-edge technologies",
+    title: "Web & SaaS Applications",
+    description: "Production-grade web apps and SaaS platforms, taken from first commit to paying customers.",
     icon: "globe",
     features: [
-      "React/Next.js Development",
-      "TypeScript & JavaScript",
-      "API Integration",
-      "Responsive Design",
-      "Performance Optimization"
-    ]
-  },
-  {
-    title: "Mobile Applications",
-    description: "Native and cross-platform mobile apps for iOS and Android",
-    icon: "smartphone",
-    features: [
-      "Swift/iOS Development",
-      "React Native",
-      "User Experience Design",
-      "App Store Deployment",
-      "Push Notifications"
+      "React / Next.js & TypeScript",
+      "Rust & Python APIs",
+      "Auth & Multi-Tenancy",
+      "Stripe & Subscription Billing",
+      "Performance & SEO Optimization"
     ]
   },
   {
     title: "Data Engineering",
-    description: "Build robust data pipelines and infrastructure",
+    description: "Reliable pipelines and warehouses that turn raw, scattered data into a single source of truth.",
     icon: "database",
     features: [
-      "ETL Pipeline Development",
-      "Snowflake & Cloud Platforms",
-      "Data Warehouse Design",
-      "Real-time Processing",
-      "Data Quality Assurance"
+      "ELT / ETL Pipelines with dbt",
+      "Snowflake & Cloud Warehouses",
+      "Semantic Layers & Metrics",
+      "Orchestration & CI/CD",
+      "Data Quality & Testing"
     ]
   },
   {
-    title: "Data Analytics & BI",
-    description: "Transform data into actionable insights",
+    title: "Analytics & BI",
+    description: "Dashboards and metric layers that give every team self-serve answers they can trust.",
     icon: "chart",
     features: [
-      "Dashboard Development",
-      "Tableau Automation",
-      "KPI Tracking",
-      "Predictive Analytics",
-      "Business Intelligence"
+      "Dashboards (Sigma / Tableau / Looker)",
+      "Standardized Metric Layers",
+      "KPI, LTV & Retention Tracking",
+      "Forecasting & Predictive Analytics",
+      "Self-Serve Analytics Enablement"
     ]
   },
   {
     title: "AI & Machine Learning",
-    description: "Intelligent solutions powered by machine learning",
+    description: "Practical ML and LLM systems that ship to production, not science projects.",
     icon: "brain",
     features: [
-      "Model Development",
-      "Natural Language Processing",
-      "Computer Vision",
-      "Predictive Modeling",
-      "AI Integration"
+      "LLM & RAG Agents (LangChain)",
+      "Predictive Modeling (XGBoost / Prophet)",
+      "Revenue & LTV Forecasting",
+      "Claude / OpenAI Integration",
+      "Workflow Automation"
     ]
   },
   {
-    title: "Cybersecurity",
-    description: "Secure your infrastructure and applications",
+    title: "Security & Automation",
+    description: "Security engineering and automation that cut risk and eliminate manual toil.",
     icon: "shield",
     features: [
-      "Security Audits",
-      "SOC Analysis",
+      "SOC Analysis & Incident Response",
       "Vulnerability Assessment",
-      "Security Automation",
-      "Compliance Implementation"
+      "Security & Reporting Automation",
+      "SOC 2 / Compliance Workflows",
+      "Splunk & SOAR Integrations"
+    ]
+  },
+  {
+    title: "Cloud & Infrastructure",
+    description: "Cloud and self-hosted infrastructure built for uptime, observability, and scale.",
+    icon: "cloud",
+    features: [
+      "GCP & Cloudflare Deployment",
+      "Docker & Containerization",
+      "CI/CD Pipelines",
+      "Monitoring & Observability (Grafana)",
+      "Infrastructure as Code (Terraform)"
     ]
   }
 ];
@@ -78,71 +78,61 @@ export const services: Service[] = [
 export const teamMembers: TeamMember[] = [
   {
     name: "Nicolo DiFerdinando",
-    role: "Security Engineer & Full-Stack Developer",
-    specialties: ["Cybersecurity", "Web Development", "Database Design", "IoT"],
-    bio: "23-year-old Industrial Engineering student at Cal Poly San Luis Obispo with a focus on cybersecurity. CompTIA Security+ and SPLUNK certified with expertise in network security, SQL databases, and process improvement.",
+    role: "Software & Security Engineer",
+    specialties: ["Full-Stack Development", "Security Automation", "Data Pipelines", "AI & LLM Agents"],
+    bio: "Industrial Engineering student at Cal Poly San Luis Obispo (B.S., 2026) working across software, data, and security. Builds full-stack products and internal tools, designs data pipelines and database systems, and automates reporting and security workflows, plus LLM agents built with LangChain and Python.",
     linkedin: "https://www.linkedin.com/in/nicolo-diferdinando/",
     github: "https://github.com/nicodiferd",
     website: "https://nicolod.org",
-    certifications: ["CompTIA Security+", "SPLUNK Certified", "SQL Database Implementation"]
+    certifications: ["CompTIA Security+", "Splunk Certified", "SQL Database Implementation"]
   },
   {
     name: "Donato DiFerdinando",
-    role: "Data Engineer & Backend Developer",
-    specialties: ["Data Engineering", "Machine Learning", "API Development", "Cloud Architecture"],
-    bio: "Expert in building scalable data infrastructure and backend systems. Specializes in Snowflake, Python, and modern API development with FastAPI. Passionate about transforming raw data into valuable insights.",
-    linkedin: "https://www.linkedin.com/in/donato-diferdinando/",
+    role: "Data Platform & Analytics Engineer",
+    specialties: ["Data Platforms", "Semantic Layers", "Analytics Engineering", "Predictive ML"],
+    bio: "Data platform and analytics engineer who owns data systems end-to-end: Snowflake, dbt, and Python pipelines, semantic layers powering hundreds of standardized metrics, and predictive models (LTV, retention, and revenue forecasting) that shape growth strategy for subscription businesses.",
+    linkedin: "https://www.linkedin.com/in/donato-diferdinando",
     github: "https://github.com/fddiferd"
   }
 ];
 
 export const projects: Project[] = [
   {
-    id: "bandit-app",
-    title: "Bandit - Student Transportation",
-    description: "A Swift-based transportation service app for students in San Luis Obispo, aimed at reducing drunk driving and improving campus safety.",
-    technologies: ["Swift", "iOS", "Firebase", "Maps API"],
+    id: "zedi",
+    title: "Zedi - Personal Finance SaaS",
+    description: "A full-stack personal finance platform with AI-powered receipt scanning, multi-tenant accounts, and subscription billing, built end-to-end and shipped to production.",
+    technologies: ["Rust / Axum", "Next.js", "TypeScript", "PostgreSQL", "Claude Vision OCR", "Stripe", "Railway"],
+    category: "web",
+    link: "https://zedi.sneeks.ai"
+  },
+  {
+    id: "semantic-layer-service",
+    title: "Semantic Layer Service",
+    description: "A dbt-powered semantic layer that standardizes business metrics across an organization, with CI/CD workflows and incremental ETL pipelines, plus a reporting migration from Tableau to Sigma that cut delivery time and licensing overhead.",
+    technologies: ["dbt", "Snowflake", "Sigma Computing", "Python", "CI/CD"],
+    category: "data"
+  },
+  {
+    id: "metric-layer",
+    title: "Metric Layer",
+    description: "A multi-tenant analytics product that sits on top of your semantic layer. Connect to semantic layer providers, then explore, catalog, and govern standardized metrics with per-tenant access, turning a raw semantic layer into a self-serve product.",
+    technologies: ["Next.js", "TypeScript", "Multi-Tenancy", "Semantic Layer APIs", "PostgreSQL"],
+    category: "data",
+    link: "https://metric-layer.ai"
+  },
+  {
+    id: "homelab",
+    title: "HomeLab Infrastructure",
+    description: "A self-hosted, distributed Proxmox environment with a ClickHouse analytics database, containerized services (n8n, Pi-hole, Tailscale), ZFS mirrored storage, and Grafana dashboards for end-to-end observability.",
+    technologies: ["Proxmox", "ClickHouse", "Docker", "Grafana", "Tailscale", "ZFS"],
+    category: "infrastructure"
+  },
+  {
+    id: "wedge",
+    title: "Wedge - Golf Companion",
+    description: "An iOS golf companion for serious players: build your bag and dial in club distances, log rounds and track your handicap index over time, and follow friends on a social leaderboard.",
+    technologies: ["Swift", "SwiftUI", "iOS", "FastAPI", "PostgreSQL"],
     category: "mobile",
-    github: "https://github.com/nicodiferd"
-  },
-  {
-    id: "ip-blocklist",
-    title: "IP Blocklist Automation",
-    description: "Python-based security automation tool that integrates with Slack and Splunk SOAR platforms for automated IP threat management.",
-    technologies: ["Python", "Splunk SOAR", "Slack API", "Security Automation"],
-    category: "security",
-    github: "https://github.com/nicodiferd"
-  },
-  {
-    id: "snowflake-service",
-    title: "Snowflake Data Service",
-    description: "Comprehensive data engineering solution built on Snowflake for efficient data processing and analytics.",
-    technologies: ["Python", "Snowflake", "SQL", "Data Engineering"],
-    category: "data",
-    github: "https://github.com/fddiferd/snowflake-service"
-  },
-  {
-    id: "fastapi-backend",
-    title: "FastAPI Backend Framework",
-    description: "Production-ready backend API framework with authentication, database integration, and scalable architecture.",
-    technologies: ["Python", "FastAPI", "PostgreSQL", "Docker"],
-    category: "web",
-    github: "https://github.com/fddiferd/fast_api_accelerator"
-  },
-  {
-    id: "tableau-automator",
-    title: "Tableau Automation Tool",
-    description: "Python automation framework for Tableau that streamlines report generation and dashboard updates.",
-    technologies: ["Python", "Tableau API", "Data Visualization", "Automation"],
-    category: "data",
-    github: "https://github.com/fddiferd/tableau-automator"
-  },
-  {
-    id: "card-trading-db",
-    title: "Card Trading Database",
-    description: "Full-stack SQL database system with CRUD functionality for retail card trading operations.",
-    technologies: ["SQL", "Database Design", "Backend Development"],
-    category: "web",
-    github: "https://github.com/nicodiferd"
+    featured: true
   }
 ];

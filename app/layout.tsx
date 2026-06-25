@@ -12,35 +12,35 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteTitle = "DiFerdinando Brothers | Software, Data & Security Engineering";
+const siteDescription =
+  "Two engineers who design and ship production-grade software, data platforms, and security automation: full-stack apps, Snowflake/dbt pipelines, analytics, AI, and cloud infrastructure.";
+
 export const metadata: Metadata = {
-  title: "DiFerdinando Brothers - Full-Stack Development & Data Engineering",
-  description: "Professional software development services specializing in web applications, mobile apps, data engineering, cybersecurity, and AI solutions.",
-  icons: {
-    icon: '/favicon.ico?v=2',
-    shortcut: '/favicon.ico?v=2',
-    apple: '/apple-icon.png',
-  },
+  metadataBase: new URL('https://diferdinando.com'),
+  title: siteTitle,
+  description: siteDescription,
   openGraph: {
-    title: "DiFerdinando Brothers - Full-Stack Development & Data Engineering",
-    description: "Professional software development services specializing in web applications, mobile apps, data engineering, cybersecurity, and AI solutions.",
+    title: siteTitle,
+    description: siteDescription,
     url: 'https://diferdinando.com',
     siteName: 'DiFerdinando Brothers',
-    images: [
-      {
-        url: '/favicon.ico?v=2', // Using favicon temporarily
-        width: 1200,
-        height: 630,
-        alt: 'DiFerdinando Brothers',
-      }
-    ],
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/og.png',
+        width: 1200,
+        height: 630,
+        alt: 'DiFerdinando Brothers | Software, Data & Security Engineering',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "DiFerdinando Brothers - Full-Stack Development & Data Engineering",
-    description: "Professional software development services specializing in web applications, mobile apps, data engineering, cybersecurity, and AI solutions.",
-    images: ['/favicon.ico?v=2'],
+    title: siteTitle,
+    description: siteDescription,
+    images: ['/og.png'],
   },
 };
 

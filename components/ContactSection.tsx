@@ -34,14 +34,15 @@ const ContactSection = () => {
           >
             <h3 className="text-2xl font-semibold mb-6 text-white">Get In Touch</h3>
             <p className="text-gray-400 mb-8">
-              Whether you need a mobile app, web platform, data infrastructure, or security solution, 
-              we're here to help turn your vision into reality.
+              Whether you need a web platform, a data pipeline, an analytics layer, or security
+              automation, we'd love to hear what you're building. Tell us about your project and
+              we'll get back to you.
             </p>
-            
+
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
                 <MapPin className="w-5 h-5 text-red-500" />
-                <span className="text-gray-300">California, USA</span>
+                <span className="text-gray-300">San Diego &amp; San Luis Obispo, CA</span>
               </div>
               
               <div className="flex items-center gap-3">
@@ -94,25 +95,25 @@ const ContactSection = () => {
                   Full-Stack Development
                 </h4>
                 <p className="text-gray-400 text-sm">
-                  React, Next.js, TypeScript, Swift, Python, FastAPI
+                  React, Next.js, TypeScript, Rust, Python, FastAPI
                 </p>
               </div>
-              
+
               <div>
                 <h4 className="font-semibold gradient-text mb-2">
                   Data & Analytics
                 </h4>
                 <p className="text-gray-400 text-sm">
-                  Snowflake, ETL Pipelines, Machine Learning, Tableau
+                  Snowflake, dbt, Semantic Layers, Sigma, Tableau, Predictive ML
                 </p>
               </div>
-              
+
               <div>
                 <h4 className="font-semibold gradient-text mb-2">
                   Security & Infrastructure
                 </h4>
                 <p className="text-gray-400 text-sm">
-                  SOC Analysis, Penetration Testing, Cloud Architecture
+                  SOC Analysis, Vulnerability Assessment, Automation, GCP & Cloudflare
                 </p>
               </div>
             </div>

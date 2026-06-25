@@ -30,18 +30,18 @@ const Navigation = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="font-bold text-xl gradient-text">
+          <Link href="/" className="text-lg font-semibold tracking-tight text-white">
             DiFerdinando Brothers
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline space-x-1">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-glow-red"
+                  className="text-zinc-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -53,7 +53,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-red-500 focus:outline-none transition-colors"
+              className="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white focus:outline-none transition-colors"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -69,7 +69,7 @@ const Navigation = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                className="text-zinc-400 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
