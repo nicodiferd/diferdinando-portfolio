@@ -35,17 +35,18 @@ This is a portfolio website for the DiFerdinando Brothers, showcasing their serv
 ### Component Architecture
 All components use client-side rendering ('use client') with Framer Motion animations:
 - **Navigation.tsx** - Fixed navigation with scroll effects
-- **HeroSection.tsx** - Animated hero with blob backgrounds
-- **ServicesSection.tsx** - Service cards with icon mapping
-- **AboutSection.tsx** - Team member profiles with social links
-- **ProjectsSection.tsx** - Filterable project gallery
-- **ContactSection.tsx** - Contact information and expertise summary
+- **HeroSection.tsx** - Wide-caps headline, dimension line, title-block strip (the site's signature element)
+- **ServicesSection.tsx** - Capabilities as a numbered spec-division index (rows, not cards)
+- **AboutSection.tsx** - Brother profiles with "revision history" career tables and accent colors
+- **ProjectsSection.tsx** - Project index with N/D lead marks; Wedge featured with screenshots
+- **ContactSection.tsx** - Large email link plus a title-block detail grid
 
-### Styling Approach
-- Tailwind CSS v4 with @import syntax
-- Custom gradient utilities (.gradient-text, .gradient-border)
-- Blob animations for hero section backgrounds
-- Dark mode CSS variables (unused but defined)
+### Styling Approach (drafting-sheet identity)
+- Tailwind CSS v4; design tokens in `@theme` in globals.css
+- Palette: vellum paper (#eeefe9), graphite ink, checker red (Nicolo), blueprint blue (Donato)
+- Fonts via next/font: Archivo variable (wdth axis, `.display-wide`), IBM Plex Sans (body), IBM Plex Mono (labels)
+- IMPORTANT: font tokens live in `@theme inline` because next/font variables are defined on `<body>`, not `:root` — plain `@theme` silently falls back to system fonts
+- Recurring devices: title block, hairline rules, `.label-mono` annotations, `.grid-drafting` background
 
 ## Deployment Notes
 
@@ -63,3 +64,4 @@ The site is configured for Cloudflare Pages deployment:
 
 ## Deployment Status
 Last deployment: January 13, 2025 - Cloudflare Pages
+July 29, 2026: full drafting-sheet redesign committed but NOT yet deployed. Before deploying: regenerate `public/og.png` (still shows the old dark design).

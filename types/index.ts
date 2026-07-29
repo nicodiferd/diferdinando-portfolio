@@ -1,7 +1,7 @@
 export interface Service {
+  code: string;
   title: string;
   description: string;
-  icon: string;
   features: string[];
 }
 
@@ -10,21 +10,30 @@ export interface Project {
   title: string;
   description: string;
   technologies: string[];
+  category: string;
+  lead: Array<'N' | 'D'>;
   link?: string;
   github?: string;
-  image?: string;
-  category: 'web' | 'mobile' | 'data' | 'security' | 'ai' | 'infrastructure';
+  status?: string;
   featured?: boolean;
+}
+
+export interface Revision {
+  rev: string;
+  year: string;
+  note: string;
 }
 
 export interface TeamMember {
   name: string;
+  firstName: string;
   role: string;
-  specialties: string[];
+  accent: 'redline' | 'blueline';
   bio: string;
-  image?: string;
+  specialties: string[];
+  revisions: Revision[];
+  onRecord: string[];
   linkedin: string;
   github: string;
   website?: string;
-  certifications?: string[];
 }

@@ -1,181 +1,175 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import Image, { type StaticImageData } from 'next/image';
-import { Github, ExternalLink } from 'lucide-react';
+import { motion, MotionConfig } from 'framer-motion';
+import Image from 'next/image';
 import { projects } from '@/lib/data';
+import type { Project } from '@/types';
 import WedgeBag from '@/lib/Wedge_bag.jpeg';
 import WedgeProfile from '@/lib/wedge_donato.jpeg';
 
-const categoryLabels: { [key: string]: string } = {
-  all: 'All Projects',
-  web: 'Web & SaaS',
-  mobile: 'Mobile',
-  data: 'Data Engineering',
-  security: 'Security',
-  ai: 'AI / ML',
-  infrastructure: 'Infrastructure',
-};
-
-// Screenshots that belong to a project, keyed by project id.
-const projectShots: { [key: string]: { src: StaticImageData; alt: string }[] } = {
-  wedge: [
-    { src: WedgeBag, alt: 'Wedge app: your golf bag and club distances' },
-    { src: WedgeProfile, alt: 'Wedge app: handicap index and recent rounds' },
-  ],
-};
-
-// Only show filters for categories that actually have projects.
-const categories = [
-  { value: 'all', label: categoryLabels.all },
-  ...Array.from(new Set(projects.map((p) => p.category))).map((value) => ({
-    value,
-    label: categoryLabels[value] ?? value,
-  })),
+const wedgeShots = [
+  { src: WedgeBag, alt: 'Wedge app: your golf bag and club distances' },
+  { src: WedgeProfile, alt: 'Wedge app: handicap index and recent rounds' },
 ];
 
-const ProjectsSection = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+// Lead marks: who drew what. N = Nicolo (redline), D = Donato (blueline).
+const LeadMarks = ({ lead }: { lead: Project['lead'] }) => (
+  <span className="flex gap-1" aria-label={`Led by ${lead.join(' and ')}`}>
+    {lead.map((initial) => (
+      <span
+        key={initial}
+        className={`flex h-5 w-5 items-center justify-center border font-mono text-[10px] font-medium ${
+          initial === 'N'
+            ? 'border-redline text-redline'
+            : 'border-blueline text-blueline'
+        }`}
+      >
+        {initial}
+      </span>
+    ))}
+  </span>
+);
 
-  const filteredProjects =
-    selectedCategory === 'all'
-      ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+const ProjectLinks = ({ project }: { project: Project }) => {
+  if (!project.link && !project.github) return null;
+  return (
+    <span className="flex gap-5">
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-[11px] uppercase tracking-[0.15em] text-graphite transition-colors hover:text-redline"
+        >
+          Code ↗
+        </a>
+      )}
+      {project.link && (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-[11px] uppercase tracking-[0.15em] text-graphite transition-colors hover:text-redline"
+        >
+          Visit ↗
+        </a>
+      )}
+    </span>
+  );
+};
+
+const ProjectsSection = () => {
+  const featured = projects.find((p) => p.featured);
+  const rest = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="py-20 bg-black relative">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-black to-zinc-950" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Featured Projects</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
-            A selection of our work showcasing our diverse technical capabilities
-          </p>
+    <MotionConfig reducedMotion="user">
+      <section id="projects" className="border-b border-line py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-14"
+          >
+            <p className="label-mono mb-3">Selected work</p>
+            <h2 className="display-wide text-3xl font-bold uppercase text-ink sm:text-4xl">
+              Project index
+            </h2>
+            <p className="mt-4 max-w-2xl text-graphite">
+              Each entry is marked with who drew it:{' '}
+              <span className="font-mono text-xs text-redline">N</span> — Nicolo,{' '}
+              <span className="font-mono text-xs text-blueline">D</span> — Donato.
+            </p>
+          </motion.div>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((category) => (
-              <button
-                key={category.value}
-                onClick={() => setSelectedCategory(category.value)}
-                className={`px-4 py-2 rounded-lg transition-all duration-200 ${
-                  selectedCategory === category.value
-                    ? 'bg-gradient-to-r from-red-600 to-blue-600 text-white shadow-lg'
-                    : 'bg-zinc-900 text-gray-300 hover:bg-zinc-800 border border-zinc-800'
-                }`}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => {
-            const shots = projectShots[project.id];
-            const isFeatured = project.featured && shots;
-
-            const details = (
-              <div className="flex flex-col">
-                <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-glow-red transition-all">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 mb-4">{project.description}</p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 bg-zinc-800 text-gray-400 rounded text-xs border border-zinc-700"
+          {/* Featured drawing: Wedge */}
+          {featured && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-12 border border-line bg-sheet"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-5">
+                <div className="grid grid-cols-2 gap-4 border-b border-line p-5 lg:col-span-3 lg:border-b-0 lg:border-r">
+                  {wedgeShots.map((shot) => (
+                    <div
+                      key={shot.alt}
+                      className="relative h-64 overflow-hidden border border-line sm:h-80"
                     >
-                      {tech}
-                    </span>
+                      <Image
+                        src={shot.src}
+                        alt={shot.alt}
+                        fill
+                        sizes="(max-width: 1024px) 45vw, 30vw"
+                        className="object-cover object-top"
+                      />
+                    </div>
                   ))}
                 </div>
-
-                {(project.github || project.link) && (
-                  <div className="flex gap-4 mt-auto">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors"
-                      >
-                        <Github className="w-4 h-4" />
-                        Code
-                      </a>
-                    )}
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        Visit
-                      </a>
-                    )}
+                <div className="flex flex-col justify-center p-7 lg:col-span-2 sm:p-9">
+                  <div className="mb-3 flex items-center gap-3">
+                    <span className="label-mono">{featured.category}</span>
+                    <LeadMarks lead={featured.lead} />
                   </div>
-                )}
+                  <h3 className="display-wide text-2xl font-bold uppercase text-ink">
+                    {featured.title}
+                  </h3>
+                  <p className="mt-4 text-[15px] leading-relaxed text-graphite">
+                    {featured.description}
+                  </p>
+                  <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-graphite/80">
+                    {featured.technologies.join(' · ')}
+                  </p>
+                  <div className="mt-5">
+                    <ProjectLinks project={featured} />
+                  </div>
+                </div>
               </div>
-            );
+            </motion.div>
+          )}
 
-            return (
+          {/* Index rows */}
+          <div className="border-t border-line">
+            {rest.map((project, index) => (
               <motion.div
                 key={project.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className={`card-glow rounded-xl overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-all duration-300 group ${
-                  isFeatured ? 'md:col-span-2' : ''
-                }`}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.04 }}
+                viewport={{ once: true }}
+                className="group border-b border-line py-7 transition-colors hover:bg-sheet"
               >
-                {isFeatured ? (
-                  <div className="flex flex-col lg:flex-row">
-                    <div className="grid grid-cols-2 gap-4 p-6 lg:w-3/5">
-                      {shots.map((shot) => (
-                        <div
-                          key={shot.alt}
-                          className="relative h-64 sm:h-72 overflow-hidden rounded-xl border border-zinc-700/60 bg-zinc-950"
-                        >
-                          <Image
-                            src={shot.src}
-                            alt={shot.alt}
-                            fill
-                            sizes="(max-width: 1024px) 45vw, 25vw"
-                            className="object-cover object-top"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                    <div className="p-6 lg:w-2/5 lg:flex lg:flex-col lg:justify-center">
-                      {details}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="p-6">{details}</div>
-                )}
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <h3 className="display-wide text-lg font-semibold uppercase text-ink">
+                    {project.title}
+                  </h3>
+                  <LeadMarks lead={project.lead} />
+                  <span className="label-mono">{project.category}</span>
+                  {project.status && (
+                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-redline">
+                      {project.status}
+                    </span>
+                  )}
+                  <span className="ml-auto">
+                    <ProjectLinks project={project} />
+                  </span>
+                </div>
+                <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-graphite">
+                  {project.description}
+                </p>
+                <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.12em] text-graphite/80">
+                  {project.technologies.join(' · ')}
+                </p>
               </motion.div>
-            );
-          })}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </MotionConfig>
   );
 };
 

@@ -1,20 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const archivo = Archivo({
   subsets: ["latin"],
+  variable: "--font-archivo",
+  axes: ["wdth"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-sans",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
 });
 
 const siteTitle = "DiFerdinando Brothers | Software, Data & Security Engineering";
 const siteDescription =
-  "Two engineers who design and ship production-grade software, data platforms, and security automation: full-stack apps, Snowflake/dbt pipelines, analytics, AI, and cloud infrastructure.";
+  "A two-brother engineering practice. Donato builds data platforms — Snowflake, dbt, and predictive ML moving a billion rows a day. Nicolo builds full-stack software, security automation, and the infrastructure underneath.";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://diferdinando.com'),
@@ -52,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${archivo.variable} ${plexSans.variable} ${plexMono.variable} antialiased`}
       >
         {children}
       </body>

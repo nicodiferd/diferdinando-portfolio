@@ -1,132 +1,121 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, MapPin } from 'lucide-react';
+import { motion, MotionConfig } from 'framer-motion';
+
+const contactBlock = [
+  {
+    label: 'Location',
+    content: (
+      <p className="font-mono text-[13px] text-ink">
+        San Diego, CA
+      </p>
+    ),
+  },
+  {
+    label: 'LinkedIn',
+    content: (
+      <p className="flex gap-4 font-mono text-[13px]">
+        <a
+          href="https://www.linkedin.com/in/nicolo-diferdinando/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-ink transition-colors hover:text-redline"
+        >
+          Nicolo ↗
+        </a>
+        <a
+          href="https://www.linkedin.com/in/donato-diferdinando"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-ink transition-colors hover:text-blueline"
+        >
+          Donato ↗
+        </a>
+      </p>
+    ),
+  },
+  {
+    label: 'GitHub',
+    content: (
+      <p className="flex gap-4 font-mono text-[13px]">
+        <a
+          href="https://github.com/nicodiferd"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-ink transition-colors hover:text-redline"
+        >
+          nicodiferd ↗
+        </a>
+        <a
+          href="https://github.com/fddiferd"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-ink transition-colors hover:text-blueline"
+        >
+          fddiferd ↗
+        </a>
+      </p>
+    ),
+  },
+  {
+    label: 'Availability',
+    content: (
+      <p className="font-mono text-[13px] text-ink">
+        Contract · consulting · long-term builds
+      </p>
+    ),
+  },
+];
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 bg-zinc-950 relative overflow-hidden">
-      {/* Animated gradient orbs */}
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-600/20 rounded-full blur-3xl animate-pulse-red" />
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl animate-pulse-blue" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Let's Build Together</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Ready to bring your project to life? We'd love to hear from you.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-4xl mx-auto">
+    <MotionConfig reducedMotion="user">
+      <section id="contact" className="grid-drafting py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-6 text-white">Get In Touch</h3>
-            <p className="text-gray-400 mb-8">
-              Whether you need a web platform, a data pipeline, an analytics layer, or security
-              automation, we'd love to hear what you're building. Tell us about your project and
-              we'll get back to you.
+            <p className="label-mono mb-3">Contact</p>
+            <h2 className="display-wide text-3xl font-bold uppercase text-ink sm:text-4xl">
+              Start a project
+            </h2>
+            <p className="mt-4 max-w-2xl text-graphite">
+              Tell us what you&apos;re building — a product, a data platform, or
+              something that keeps breaking at 2 a.m. One of us is the right
+              brother for it.
             </p>
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                <MapPin className="w-5 h-5 text-red-500" />
-                <span className="text-gray-300">San Diego &amp; San Luis Obispo, CA</span>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-blue-500" />
-                <a 
-                  href="mailto:contact@diferdinando.com" 
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
-                >
-                  contact@diferdinando.com
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <h4 className="font-semibold mb-4 text-white">Connect With Us</h4>
-              <div className="flex gap-4">
-                <a
-                  href="https://www.linkedin.com/in/nicolo-diferdinando/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-red-600/20 text-red-400 rounded-lg hover:bg-red-600/30 transition-all duration-200 border border-red-600/50 hover:border-red-500"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  Nicolo
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/donato-diferdinando/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-red-600/20 text-red-400 rounded-lg hover:bg-red-600/30 transition-all duration-200 border border-red-600/50 hover:border-red-500"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  Donato
-                </a>
-              </div>
-            </div>
+            <a
+              href="mailto:contact@diferdinando.com"
+              className="mt-10 inline-block break-all font-mono text-2xl text-ink underline decoration-line decoration-2 underline-offset-8 transition-colors hover:text-redline hover:decoration-redline sm:text-4xl"
+            >
+              contact@diferdinando.com
+            </a>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="card-glow p-8 rounded-xl border border-zinc-800"
+            className="mt-14 grid grid-cols-1 border border-line bg-sheet sm:grid-cols-2 lg:grid-cols-4"
           >
-            <h3 className="text-2xl font-semibold mb-6 text-white">Our Expertise</h3>
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-semibold gradient-text mb-2">
-                  Full-Stack Development
-                </h4>
-                <p className="text-gray-400 text-sm">
-                  React, Next.js, TypeScript, Rust, Python, FastAPI
-                </p>
+            {contactBlock.map((cell, i) => (
+              <div
+                key={cell.label}
+                className={`px-5 py-4 ${i > 0 ? 'border-t border-line sm:border-t-0 sm:border-l max-lg:sm:[&:nth-child(3)]:border-l-0 max-lg:sm:[&:nth-child(n+3)]:border-t' : ''}`}
+              >
+                <p className="label-mono mb-2">{cell.label}</p>
+                {cell.content}
               </div>
-
-              <div>
-                <h4 className="font-semibold gradient-text mb-2">
-                  Data & Analytics
-                </h4>
-                <p className="text-gray-400 text-sm">
-                  Snowflake, dbt, Semantic Layers, Sigma, Tableau, Predictive ML
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold gradient-text mb-2">
-                  Security & Infrastructure
-                </h4>
-                <p className="text-gray-400 text-sm">
-                  SOC Analysis, Vulnerability Assessment, Automation, GCP & Cloudflare
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 p-4 bg-gradient-to-r from-red-600/10 to-blue-600/10 rounded-lg border border-zinc-700">
-              <p className="text-sm text-gray-300">
-                <strong>Available for:</strong> Contract work, consulting, and long-term partnerships
-              </p>
-            </div>
+            ))}
           </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+    </MotionConfig>
   );
 };
 

@@ -4,6 +4,13 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
+const navItems = [
+  { href: '#services', label: 'Capabilities' },
+  { href: '#about', label: 'Brothers' },
+  { href: '#projects', label: 'Work' },
+  { href: '#contact', label: 'Contact' },
+];
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -16,60 +23,56 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { href: '#home', label: 'Home' },
-    { href: '#services', label: 'Services' },
-    { href: '#about', label: 'About' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' },
-  ];
-
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-black/90 backdrop-blur-lg border-b border-zinc-800' : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-lg font-semibold tracking-tight text-white">
-            DiFerdinando Brothers
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-paper/95 backdrop-blur border-b border-line'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <Link href="/" className="flex items-baseline gap-2">
+            <span className="display-wide text-sm font-bold uppercase tracking-wide text-ink">
+              DiFerdinando
+            </span>
+            <span className="label-mono">Brothers</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-zinc-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile Navigation Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white focus:outline-none transition-colors"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-lg border-b border-zinc-800">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {/* Desktop navigation */}
+          <div className="hidden items-center gap-7 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-zinc-400 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                className="font-mono text-[11px] uppercase tracking-[0.18em] text-graphite transition-colors hover:text-redline"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 text-graphite transition-colors hover:text-ink md:hidden"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="border-b border-line bg-paper md:hidden">
+          <div className="space-y-1 px-5 pb-4 pt-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block py-2 font-mono text-xs uppercase tracking-[0.18em] text-graphite transition-colors hover:text-redline"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}

@@ -1,132 +1,164 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
 import Image from 'next/image';
-import { Github, Linkedin, Globe, Award } from 'lucide-react';
 import { teamMembers } from '@/lib/data';
 import NicoloPhoto from '@/lib/Nicolo.jpeg';
 import DonatoPhoto from '@/lib/Donato.jpeg';
 
+const accentBg = {
+  redline: 'bg-redline',
+  blueline: 'bg-blueline',
+} as const;
+
+const accentText = {
+  redline: 'text-redline',
+  blueline: 'text-blueline',
+} as const;
+
+const accentHover = {
+  redline: 'hover:text-redline',
+  blueline: 'hover:text-blueline',
+} as const;
+
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 bg-zinc-950 relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(220,38,38,0.1)_0%,transparent_50%),radial-gradient(circle_at_80%_50%,rgba(37,99,235,0.1)_0%,transparent_50%)]" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Meet The Team</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Two brothers with complementary skills, united by a passion for technology and innovation
-          </p>
-        </motion.div>
+    <MotionConfig reducedMotion="user">
+      <section id="about" className="border-b border-line py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-14"
+          >
+            <p className="label-mono mb-3">The brothers</p>
+            <h2 className="display-wide text-3xl font-bold uppercase text-ink sm:text-4xl">
+              Two of us
+            </h2>
+            <p className="mt-4 max-w-2xl text-graphite">
+              Both trained as Industrial Engineers at Cal Poly San Luis Obispo,
+              six years apart — and both ended up building at PeopleConnect in
+              San Diego. Same degree, different obsessions.
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {teamMembers.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="card-glow rounded-xl p-8 border border-zinc-800 hover:border-zinc-700 transition-all duration-300"
-            >
-              <div className="flex flex-col lg:flex-row gap-8">
-                {/* Photo */}
-                <div className="lg:w-1/3">
-                  <div className="relative w-48 h-48 mx-auto lg:mx-0 rounded-xl overflow-hidden border-2 border-zinc-700">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            {teamMembers.map((member, index) => (
+              <motion.article
+                key={member.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="border border-line bg-sheet p-7 sm:p-9"
+              >
+                {/* Header */}
+                <div className="flex items-start gap-5">
+                  <div className="relative h-24 w-24 shrink-0 overflow-hidden border border-line">
                     <Image
-                      src={member.name.includes('Nicolo') ? NicoloPhoto : DonatoPhoto}
+                      src={member.firstName === 'Nicolo' ? NicoloPhoto : DonatoPhoto}
                       alt={member.name}
                       fill
                       className="object-cover"
                     />
                   </div>
+                  <div className="min-w-0">
+                    <h3 className="display-wide text-xl font-bold uppercase leading-tight text-ink sm:text-2xl">
+                      {member.firstName}
+                    </h3>
+                    <div className={`mt-2 h-0.5 w-10 ${accentBg[member.accent]}`} />
+                    <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-graphite">
+                      {member.role}
+                    </p>
+                  </div>
                 </div>
-                
-                {/* Content */}
-                <div className="lg:w-2/3">
-                  <h3 className="text-2xl font-bold mb-2 text-white">{member.name}</h3>
-                  <p className="text-lg gradient-text mb-4">{member.role}</p>
-                  <p className="text-gray-400 mb-6">{member.bio}</p>
-                </div>
-              </div>
 
-              <div className="mb-6">
-                <h4 className="font-semibold mb-3 text-gray-300">
-                  Core Specialties
-                </h4>
-                <div className="flex flex-wrap gap-2">
+                <p className="mt-6 text-[15px] leading-relaxed text-graphite">
+                  {member.bio}
+                </p>
+
+                {/* Specialties */}
+                <div className="mt-6 flex flex-wrap gap-2">
                   {member.specialties.map((specialty) => (
                     <span
                       key={specialty}
-                      className="px-3 py-1 bg-gradient-to-r from-red-600/20 to-blue-600/20 text-gray-300 border border-zinc-700 rounded-full text-sm"
+                      className="border border-line px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-graphite"
                     >
                       {specialty}
                     </span>
                   ))}
                 </div>
-              </div>
 
-              {member.certifications && (
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-3 text-gray-300 flex items-center">
-                    <Award className="w-4 h-4 mr-2 text-red-500" />
-                    Certifications
-                  </h4>
-                  <ul className="space-y-1">
-                    {member.certifications.map((cert) => (
-                      <li key={cert} className="text-gray-400 text-sm">
-                        <span className="text-blue-500">•</span> {cert}
+                {/* Revision history */}
+                <div className="mt-8">
+                  <p className="label-mono mb-3">Revision history</p>
+                  <div className="border-t border-line">
+                    {member.revisions.map((revision) => (
+                      <div
+                        key={revision.rev}
+                        className="flex items-baseline gap-4 border-b border-line-soft py-2.5 font-mono text-xs"
+                      >
+                        <span className={`w-4 shrink-0 font-medium ${accentText[member.accent]}`}>
+                          {revision.rev}
+                        </span>
+                        <span className="w-10 shrink-0 text-graphite">
+                          {revision.year}
+                        </span>
+                        <span className="text-ink">{revision.note}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* On record */}
+                <div className="mt-7">
+                  <p className="label-mono mb-3">On record</p>
+                  <ul className="space-y-1.5">
+                    {member.onRecord.map((entry) => (
+                      <li key={entry} className="font-mono text-xs text-graphite">
+                        {entry}
                       </li>
                     ))}
                   </ul>
                 </div>
-              )}
 
-              <div className="flex gap-4">
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-400 hover:text-red-500 transition-all duration-200"
-                >
-                  <Linkedin className="w-5 h-5" />
-                  LinkedIn
-                </a>
-                <a
-                  href={member.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-400 hover:text-red-500 transition-all duration-200"
-                >
-                  <Github className="w-5 h-5" />
-                  GitHub
-                </a>
-                {member.website && (
+                {/* Links */}
+                <div className="mt-8 flex flex-wrap gap-6 border-t border-line pt-5">
                   <a
-                    href={member.website}
+                    href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-400 hover:text-red-500 transition-all duration-200"
+                    className={`font-mono text-[11px] uppercase tracking-[0.15em] text-graphite transition-colors ${accentHover[member.accent]}`}
                   >
-                    <Globe className="w-5 h-5" />
-                    Website
+                    LinkedIn ↗
                   </a>
-                )}
-              </div>
-            </motion.div>
-          ))}
+                  <a
+                    href={member.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`font-mono text-[11px] uppercase tracking-[0.15em] text-graphite transition-colors ${accentHover[member.accent]}`}
+                  >
+                    GitHub ↗
+                  </a>
+                  {member.website && (
+                    <a
+                      href={member.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`font-mono text-[11px] uppercase tracking-[0.15em] text-graphite transition-colors ${accentHover[member.accent]}`}
+                    >
+                      nicolod.org ↗
+                    </a>
+                  )}
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </MotionConfig>
   );
 };
 

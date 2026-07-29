@@ -1,121 +1,86 @@
 @import "tailwindcss";
 
+@theme {
+  /* Drafting sheet palette */
+  --color-paper: #eeefe9;      /* vellum background */
+  --color-sheet: #f6f6f1;      /* raised card surface */
+  --color-ink: #20241f;        /* graphite ink */
+  --color-graphite: #565a50;   /* secondary text */
+  --color-line: #cfd0c3;       /* hairlines and rules */
+  --color-line-soft: #dfe0d5;  /* lighter hairlines */
+  --color-redline: #b0392c;    /* checker's red — Nicolo */
+  --color-blueline: #2f547a;   /* blueprint blue — Donato */
+}
+
+/* next/font variables live on <body>, so they must be inlined into the
+   utilities rather than resolved at :root */
+@theme inline {
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-  
-  :root {
-    --background: #000000;
-    --foreground: #ffffff;
-    --card: #0a0a0a;
-    --card-foreground: #ffffff;
-    --primary: #dc2626;
-    --primary-foreground: #ffffff;
-    --secondary: #2563eb;
-    --secondary-foreground: #ffffff;
-    --muted: #171717;
-    --muted-foreground: #a3a3a3;
-    --accent: #dc2626;
-    --accent-foreground: #ffffff;
-    --border: #262626;
-  }
-  
+
   body {
-    @apply bg-black text-white;
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+
+  ::selection {
+    background: var(--color-redline);
+    color: var(--color-sheet);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-redline);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
 @layer components {
-  .gradient-text {
-    @apply bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent;
+  /* Wide-set display type, the drawing-lettering voice of the site */
+  .display-wide {
+    font-family: var(--font-archivo), sans-serif;
+    font-variation-settings: "wdth" 125;
+    letter-spacing: 0.02em;
   }
-  
-  .gradient-text-alt {
-    @apply bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent;
-  }
-  
-  .gradient-border {
-    @apply relative;
-    background: linear-gradient(#000000, #000000) padding-box,
-                linear-gradient(to right, #dc2626, #2563eb) border-box;
-    border: 2px solid transparent;
-  }
-  
-  .card-glow {
-    @apply relative overflow-hidden;
-    background: linear-gradient(145deg, #0a0a0a 0%, #171717 100%);
-    box-shadow: 0 0 30px rgba(220, 38, 38, 0.1), 0 0 60px rgba(37, 99, 235, 0.05);
-  }
-  
-  .button-glow-red {
-    @apply relative overflow-hidden;
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.5), inset 0 0 20px rgba(220, 38, 38, 0.1);
-  }
-  
-  .button-glow-blue {
-    @apply relative overflow-hidden;
-    box-shadow: 0 0 20px rgba(37, 99, 235, 0.5), inset 0 0 20px rgba(37, 99, 235, 0.1);
-  }
-  
-  .text-glow-red {
-    text-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
-  }
-  
-  .text-glow-blue {
-    text-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
-  }
-}
 
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
+  /* Small annotation labels, as on a drawing sheet */
+  .label-mono {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-graphite;
   }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
 
-@keyframes pulse-red {
-  0%, 100% {
-    opacity: 0.3;
+  /* Outlined lettering (stencil), with a solid fallback */
+  .text-outline {
+    color: var(--color-ink);
   }
-  50% {
-    opacity: 0.6;
+  @supports (-webkit-text-stroke: 1px black) {
+    .text-outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--color-ink);
+    }
   }
-}
 
-@keyframes pulse-blue {
-  0%, 100% {
-    opacity: 0.3;
+  /* Faint drafting grid: minor 24px, major 120px */
+  .grid-drafting {
+    background-image:
+      linear-gradient(to right, rgba(32, 36, 31, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(32, 36, 31, 0.045) 1px, transparent 1px),
+      linear-gradient(to right, rgba(32, 36, 31, 0.09) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(32, 36, 31, 0.09) 1px, transparent 1px);
+    background-size:
+      24px 24px,
+      24px 24px,
+      120px 120px,
+      120px 120px;
   }
-  50% {
-    opacity: 0.6;
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-.animate-pulse-red {
-  animation: pulse-red 4s infinite;
-}
-
-.animate-pulse-blue {
-  animation: pulse-blue 4s infinite;
 }

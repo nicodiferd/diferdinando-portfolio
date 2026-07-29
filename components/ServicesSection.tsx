@@ -1,76 +1,64 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Globe, Database, BarChart3, Brain, Shield, Cloud } from 'lucide-react';
+import { motion, MotionConfig } from 'framer-motion';
 import { services } from '@/lib/data';
-
-const iconMap: { [key: string]: any } = {
-  globe: Globe,
-  database: Database,
-  chart: BarChart3,
-  brain: Brain,
-  shield: Shield,
-  cloud: Cloud,
-};
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-20 bg-black relative">
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Our Services</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Comprehensive technology solutions tailored to your business needs
-          </p>
-        </motion.div>
+    <MotionConfig reducedMotion="user">
+      <section id="services" className="border-b border-line py-24">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-14"
+          >
+            <p className="label-mono mb-3">Capabilities</p>
+            <h2 className="display-wide text-3xl font-bold uppercase text-ink sm:text-4xl">
+              Six divisions, one practice
+            </h2>
+            <p className="mt-4 max-w-2xl text-graphite">
+              Most projects draw on two or three of these at once — that&apos;s
+              the point of hiring brothers instead of two separate contractors.
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
-            const Icon = iconMap[service.icon];
-            return (
+          <div className="border-t border-line">
+            {services.map((service, index) => (
               <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={service.code}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-                className="card-glow rounded-xl p-8 border border-zinc-800 hover:border-zinc-700 transition-all duration-300 group cursor-pointer"
+                className="group grid grid-cols-1 gap-3 border-b border-line py-7 transition-colors hover:bg-sheet lg:grid-cols-12 lg:gap-6"
               >
-                <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-red-600/20 to-blue-600/20 rounded-lg mb-6 group-hover:scale-110 transition-transform">
-                  <Icon className="w-7 h-7 text-red-500 group-hover:text-blue-500 transition-colors" />
+                <div className="lg:col-span-1">
+                  <span className="font-mono text-sm text-graphite">
+                    {service.code}
+                  </span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">{service.title}</h3>
-                <p className="text-gray-400 mb-6">
-                  {service.description}
-                </p>
-                <ul className="space-y-2">
-                  {service.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-start text-sm text-gray-500"
-                    >
-                      <span className="text-red-500 mr-2">•</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <div className="lg:col-span-4">
+                  <h3 className="display-wide text-lg font-semibold uppercase text-ink">
+                    {service.title}
+                  </h3>
+                </div>
+                <div className="lg:col-span-7">
+                  <p className="text-[15px] leading-relaxed text-graphite">
+                    {service.description}
+                  </p>
+                  <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.12em] text-graphite/80">
+                    {service.features.join(' · ')}
+                  </p>
+                </div>
               </motion.div>
-            );
-          })}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </MotionConfig>
   );
 };
 

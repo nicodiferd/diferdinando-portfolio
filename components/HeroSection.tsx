@@ -1,16 +1,16 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
 
 const container = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 14 },
   show: {
     opacity: 1,
     y: 0,
@@ -18,98 +18,130 @@ const item = {
   },
 };
 
-const techStack = ['Next.js', 'Rust', 'TypeScript', 'Snowflake', 'dbt', 'Python', 'GCP'];
+const line = {
+  hidden: { scaleX: 0 },
+  show: {
+    scaleX: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+const titleBlock = [
+  { label: 'Drawn by', value: 'N. DiFerdinando' },
+  { label: 'Checked by', value: 'D. DiFerdinando' },
+  { label: 'Scale', value: 'Full' },
+  { label: 'Status', value: 'Open for projects', accent: true },
+];
 
 const HeroSection = () => {
   return (
-    <section
-      id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black"
-    >
-      {/* Single, restrained ambient glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-[-15%] h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.14),transparent_70%)] blur-3xl" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-black" />
-      </div>
-
-      {/* Faint dot grid, masked toward the center */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.18]"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.18) 1px, transparent 0)',
-          backgroundSize: '34px 34px',
-          maskImage:
-            'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%)',
-          WebkitMaskImage:
-            'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%)',
-        }}
-      />
-
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center"
+    <MotionConfig reducedMotion="user">
+      <section
+        id="home"
+        className="grid-drafting relative border-b border-line"
       >
-        {/* Eyebrow */}
-        <motion.div variants={item} className="mb-8 flex justify-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/60 px-3.5 py-1.5 text-sm text-zinc-400 backdrop-blur">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75 motion-reduce:animate-none" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
-            </span>
-            Available for new projects
-          </span>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h1
-          variants={item}
-          className="text-balance text-4xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl"
-        >
-          DiFerdinando Brothers
-        </motion.h1>
-
-        {/* Subhead */}
-        <motion.p
-          variants={item}
-          className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-zinc-400 sm:text-xl"
-        >
-          Two engineers building production-grade software, data platforms, and
-          security automation for teams that need them to actually work.
-        </motion.p>
-
-        {/* CTAs */}
         <motion.div
-          variants={item}
-          className="mt-10 flex flex-wrap items-center justify-center gap-3"
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 pb-10 pt-28 sm:px-8"
         >
-          <a
-            href="#projects"
-            className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
+          {/* Sheet annotations */}
+          <motion.div
+            variants={item}
+            className="mb-10 flex items-center justify-between gap-4"
           >
-            View our work
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center rounded-lg border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-200 transition-colors hover:border-zinc-500 hover:bg-zinc-900"
-          >
-            Get in touch
-          </a>
-        </motion.div>
+            <span className="label-mono">
+              Engineering practice — software / data / security
+            </span>
+            <span className="label-mono hidden sm:block">
+              San Diego, CA
+            </span>
+          </motion.div>
 
-        {/* Tech strip */}
-        <motion.div variants={item} className="mt-16">
-          <p className="text-xs uppercase tracking-[0.2em] text-zinc-600">Building with</p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-zinc-500">
-            {techStack.map((tech) => (
-              <span key={tech}>{tech}</span>
+          {/* Headline — opacity-only reveal; a transform here makes Chrome
+              leave stale raster behind the text-stroke outline */}
+          <motion.h1
+            variants={{
+              hidden: { opacity: 0 },
+              show: { opacity: 1, transition: { duration: 0.7 } },
+            }}
+            className="display-wide text-[clamp(1.75rem,8.5vw,6.75rem)] font-bold uppercase leading-[0.95] text-ink"
+          >
+            DiFerdinando
+            <br />
+            <span className="text-outline">Brothers</span>
+          </motion.h1>
+
+          {/* Dimension line */}
+          <motion.div
+            variants={item}
+            className="mt-8 flex items-center gap-3 text-ink"
+            aria-hidden="true"
+          >
+            <span className="h-3.5 w-px bg-ink" />
+            <span className="h-0 w-0 border-y-[3.5px] border-r-[7px] border-y-transparent border-r-ink" />
+            <motion.span variants={line} className="h-px flex-1 origin-left bg-ink" />
+            <span className="label-mono whitespace-nowrap text-ink">
+              Two brothers · end to end
+            </span>
+            <motion.span variants={line} className="h-px flex-1 origin-right bg-ink" />
+            <span className="h-0 w-0 border-y-[3.5px] border-l-[7px] border-y-transparent border-l-ink" />
+            <span className="h-3.5 w-px bg-ink" />
+          </motion.div>
+
+          {/* Subhead */}
+          <motion.p
+            variants={item}
+            className="mt-8 max-w-2xl text-lg leading-relaxed text-graphite"
+          >
+            Donato builds data platforms that move a billion rows a day. Nicolo
+            ships the software, security, and infrastructure around them.
+            Together we take projects from first commit to production — and keep
+            them running.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div variants={item} className="mt-10 flex flex-wrap gap-3">
+            <a
+              href="#projects"
+              className="inline-flex items-center border border-ink bg-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-sheet transition-colors hover:bg-transparent hover:text-ink"
+            >
+              See the work
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center border border-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-ink transition-colors hover:bg-ink hover:text-sheet"
+            >
+              Start a project
+            </a>
+          </motion.div>
+
+          {/* Title block — the sheet's signature */}
+          <motion.div
+            variants={item}
+            className="mt-16 grid grid-cols-2 border border-line bg-sheet sm:grid-cols-4"
+          >
+            {titleBlock.map((cell, i) => (
+              <div
+                key={cell.label}
+                className={`px-4 py-3 ${i > 0 ? 'border-l border-line max-sm:[&:nth-child(3)]:border-l-0' : ''} ${
+                  i >= 2 ? 'max-sm:border-t max-sm:border-line' : ''
+                }`}
+              >
+                <p className="label-mono mb-1">{cell.label}</p>
+                <p className="flex items-center gap-2 font-mono text-[13px] text-ink">
+                  {cell.accent && (
+                    <span className="inline-block h-2 w-2 bg-redline" aria-hidden="true" />
+                  )}
+                  {cell.value}
+                </p>
+              </div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </section>
+      </section>
+    </MotionConfig>
   );
 };
 
