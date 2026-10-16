@@ -78,13 +78,12 @@ export const services: Service[] = [
 export const teamMembers: TeamMember[] = [
   {
     name: "Nicolo DiFerdinando",
-    role: "Software & Security Engineer",
+    role: "AI, Software & Security Engineer",
     specialties: ["Full-Stack Development", "Security Automation", "Data Pipelines", "AI & LLM Agents"],
-    bio: "Industrial Engineering student at Cal Poly San Luis Obispo (B.S., 2026) working across software, data, and security. Builds full-stack products and internal tools, designs data pipelines and database systems, and automates reporting and security workflows, plus LLM agents built with LangChain and Python.",
+    bio: "AI-Driven Solutions Analyst at PeopleConnect, building LLM-powered tools and workflow automation across growth, BI, and operations. Industrial Engineering graduate of Cal Poly San Luis Obispo (B.S., June 2026) working across software, data, and security: full-stack products and internal tools, data pipelines and database systems, and automated reporting and security workflows.",
     linkedin: "https://www.linkedin.com/in/nicolo-diferdinando/",
     github: "https://github.com/nicodiferd",
-    website: "https://nicolod.org",
-    certifications: ["CompTIA Security+", "Splunk Certified", "SQL Database Implementation"]
+    website: "https://nicolod.org"
   },
   {
     name: "Donato DiFerdinando",
@@ -103,7 +102,7 @@ export const projects: Project[] = [
     description: "A full-stack personal finance platform with AI-powered receipt scanning, multi-tenant accounts, and subscription billing, built end-to-end and shipped to production.",
     technologies: ["Rust / Axum", "Next.js", "TypeScript", "PostgreSQL", "Claude Vision OCR", "Stripe", "Railway"],
     category: "web",
-    link: "https://zedi.sneeks.ai"
+    link: "https://zedi.dev"
   },
   {
     id: "semantic-layer-service",
@@ -123,8 +122,8 @@ export const projects: Project[] = [
   {
     id: "homelab",
     title: "HomeLab Infrastructure",
-    description: "A self-hosted, distributed Proxmox environment with a ClickHouse analytics database, containerized services (n8n, Pi-hole, Tailscale), ZFS mirrored storage, and Grafana dashboards for end-to-end observability.",
-    technologies: ["Proxmox", "ClickHouse", "Docker", "Grafana", "Tailscale", "ZFS"],
+    description: "A single-node Proxmox lab in San Diego on ZFS mirrored storage: n8n for scheduled automation, a ClickHouse metrics warehouse with an outside-in Cloudflare heartbeat, verified backups, local AI OCR on a GPU, and private remote access over Tailscale.",
+    technologies: ["Proxmox", "ClickHouse", "n8n", "Tailscale", "Cloudflare", "ZFS"],
     category: "infrastructure"
   },
   {
