@@ -20,7 +20,7 @@ const ServicesSection = () => {
               Six divisions, one practice
             </h2>
             <p className="mt-4 max-w-2xl text-graphite">
-              Most projects draw on two or three of these at once — that&apos;s
+              Most projects draw on two or three of these at once: that&apos;s
               the point of hiring brothers instead of two separate contractors.
             </p>
           </motion.div>

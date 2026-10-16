@@ -39,7 +39,7 @@ const AboutSection = () => {
             </h2>
             <p className="mt-4 max-w-2xl text-graphite">
               Both trained as Industrial Engineers at Cal Poly San Luis Obispo,
-              six years apart — and both ended up building at PeopleConnect in
+              six years apart, and both ended up building at PeopleConnect in
               San Diego. Same degree, different obsessions.
             </p>
           </motion.div>

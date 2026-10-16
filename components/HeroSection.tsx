@@ -52,14 +52,14 @@ const HeroSection = () => {
             className="mb-10 flex items-center justify-between gap-4"
           >
             <span className="label-mono">
-              Engineering practice — software / data / security
+              Engineering practice: software / data / security
             </span>
             <span className="label-mono hidden sm:block">
               San Diego, CA
             </span>
           </motion.div>
 
-          {/* Headline — opacity-only reveal; a transform here makes Chrome
+          {/* Headline: opacity-only reveal; a transform here makes Chrome
               leave stale raster behind the text-stroke outline */}
           <motion.h1
             variants={{
@@ -97,7 +97,7 @@ const HeroSection = () => {
           >
             Donato builds data platforms that move a billion rows a day. Nicolo
             ships the software, security, and infrastructure around them.
-            Together we take projects from first commit to production — and keep
+            Together we take projects from first commit to production, and keep
             them running.
           </motion.p>
 
@@ -117,7 +117,7 @@ const HeroSection = () => {
             </a>
           </motion.div>
 
-          {/* Title block — the sheet's signature */}
+          {/* Title block: the sheet's signature */}
           <motion.div
             variants={item}
             className="mt-16 grid grid-cols-2 border border-line bg-sheet sm:grid-cols-4"

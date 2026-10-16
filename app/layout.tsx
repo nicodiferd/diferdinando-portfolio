@@ -22,7 +22,7 @@ const plexMono = IBM_Plex_Mono({
 
 const siteTitle = "DiFerdinando Brothers | Software, Data & Security Engineering";
 const siteDescription =
-  "A two-brother engineering practice. Donato builds data platforms — Snowflake, dbt, and predictive ML moving a billion rows a day. Nicolo builds full-stack software, security automation, and the infrastructure underneath.";
+  "A two-brother engineering practice. Donato builds data platforms: Snowflake, dbt, and predictive ML moving a billion rows a day. Nicolo builds full-stack software, security automation, and the infrastructure underneath.";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://diferdinando.com'),

@@ -8,8 +8,8 @@
   --color-graphite: #565a50;   /* secondary text */
   --color-line: #cfd0c3;       /* hairlines and rules */
   --color-line-soft: #dfe0d5;  /* lighter hairlines */
-  --color-redline: #b0392c;    /* checker's red — Nicolo */
-  --color-blueline: #2f547a;   /* blueprint blue — Donato */
+  --color-redline: #b0392c;    /* checker's red: Nicolo */
+  --color-blueline: #2f547a;   /* blueprint blue: Donato */
 }
 
 /* next/font variables live on <body>, so they must be inlined into the

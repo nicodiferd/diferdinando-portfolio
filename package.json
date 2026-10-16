@@ -7,9 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "npm run pages:build && wrangler pages dev",
-    "deploy": "npm run pages:build && wrangler pages deploy"
+    "preview": "next build && wrangler pages dev out",
+    "deploy": "next build && wrangler pages deploy out --project-name diferdinando-portfolio"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

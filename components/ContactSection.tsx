@@ -83,7 +83,7 @@ const ContactSection = () => {
               Start a project
             </h2>
             <p className="mt-4 max-w-2xl text-graphite">
-              Tell us what you&apos;re building — a product, a data platform, or
+              Tell us what you&apos;re building: a product, a data platform, or
               something that keeps breaking at 2 a.m. One of us is the right
               brother for it.
             </p>

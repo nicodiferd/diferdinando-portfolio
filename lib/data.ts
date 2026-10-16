@@ -84,11 +84,11 @@ export const teamMembers: TeamMember[] = [
     bio: "Donato owns data platforms end to end. At People Connect he architected the Snowflake + dbt ecosystem behind 300+ standardized metrics, built pipelines ingesting 150M+ rows a day from 200+ sources, and ships predictive LTV and bidding models that steer $100M+ in annual ad spend.",
     specialties: ["Data Platforms", "Semantic Layers", "Analytics Engineering", "Predictive ML"],
     revisions: [
-      { rev: "E", year: "2026", note: "Business Intelligence Lead — People Connect" },
-      { rev: "D", year: "2024", note: "Principal BI Analyst — People Connect · MBA, National University" },
-      { rev: "C", year: "2023", note: "Senior BI Analyst — Maravai Life Sciences" },
-      { rev: "B", year: "2021", note: "Data Engineer — General Dynamics NASSCO" },
-      { rev: "A", year: "2020", note: "B.S. Industrial Engineering — Cal Poly San Luis Obispo" }
+      { rev: "E", year: "2026", note: "Business Intelligence Lead, People Connect" },
+      { rev: "D", year: "2024", note: "Principal BI Analyst, People Connect · MBA, National University" },
+      { rev: "C", year: "2023", note: "Senior BI Analyst, Maravai Life Sciences" },
+      { rev: "B", year: "2021", note: "Data Engineer, General Dynamics NASSCO" },
+      { rev: "A", year: "2020", note: "B.S. Industrial Engineering, Cal Poly San Luis Obispo" }
     ],
     onRecord: [
       "300+ metrics · 30+ semantic models · 200+ dbt models",
@@ -104,21 +104,21 @@ export const teamMembers: TeamMember[] = [
     firstName: "Nicolo",
     role: "AI, Software & Security Engineer",
     accent: "redline",
-    bio: "Nicolo ships AI-driven tooling at PeopleConnect — LLM-powered workflow automation across growth and operations — after coming up through security: SOC analyst at Cal Poly ITS and a SOC 2 audit closed in 4 weeks against a projected 10. On his own time he runs a Rust personal-finance SaaS in production and a 12-service homelab, and co-founded Bandit, a student transportation startup.",
+    bio: "Nicolo is an AI-Driven Solutions Analyst at PeopleConnect, shipping LLM-powered workflow automation across growth, BI, and operations, after coming up through security: SOC analyst at Cal Poly ITS and a SOC 2 audit closed in 4 weeks against a projected 10. On his own time he runs Zedi, a Rust personal-finance SaaS in production, keeps a single-node Proxmox homelab, and co-founded Bandit, a student transportation startup.",
     specialties: ["AI & LLM Agents", "Security Automation", "Full-Stack Development", "Data Engineering"],
     revisions: [
-      { rev: "F", year: "2026", note: "AI-Driven Solutions Analyst — PeopleConnect" },
-      { rev: "E", year: "2026", note: "B.S. Industrial Engineering — Cal Poly SLO · Flora wins Best in Lab" },
-      { rev: "D", year: "2025", note: "Cybersecurity & IT Intern, then BI Intern — PeopleConnect" },
-      { rev: "C", year: "2024", note: "Assistant Student SOC Analyst — Cal Poly ITS · Co-founded Bandit" },
-      { rev: "B", year: "2023", note: "Cal Poly Club Baseball — Player, later Co-President" },
-      { rev: "A", year: "2022", note: "Cybersecurity Intern — loanDepot · Kappa Sigma President" }
+      { rev: "F", year: "2026", note: "AI-Driven Solutions Analyst, PeopleConnect" },
+      { rev: "E", year: "2026", note: "B.S. Industrial Engineering, Cal Poly SLO · Flora wins Best in Lab" },
+      { rev: "D", year: "2025", note: "Cybersecurity & IT Intern, then BI Intern, PeopleConnect" },
+      { rev: "C", year: "2024", note: "Assistant Student SOC Analyst, Cal Poly ITS · Co-founded Bandit" },
+      { rev: "B", year: "2023", note: "Cal Poly Club Baseball: Player, later Co-President" },
+      { rev: "A", year: "2022", note: "Cybersecurity Intern, loanDepot · Kappa Sigma President" }
     ],
     onRecord: [
-      "Splunk Enterprise Certified",
+      "Zedi in production: Rust + Postgres row-level security",
       "SOC 2 audit closed in 4 weeks vs. 10 projected",
       "50+ security incidents triaged weekly (Cal Poly SOC)",
-      "Best in Lab — Flora, senior project expo"
+      "Best in Lab: Flora, senior project expo"
     ],
     linkedin: "https://www.linkedin.com/in/nicolo-diferdinando/",
     github: "https://github.com/nicodiferd",
@@ -139,16 +139,16 @@ export const projects: Project[] = [
   {
     id: "zedi",
     title: "Zedi",
-    description: "A personal finance platform with AI receipt scanning, CSV/QFX/PDF statement imports, row-level multi-tenancy, and subscription billing — built end to end and running in production.",
+    description: "A personal finance platform with AI receipt scanning, CSV/QFX/PDF statement imports, row-level multi-tenancy, and subscription billing, built end to end and running in production.",
     technologies: ["Rust / Axum", "Next.js", "PostgreSQL", "Claude Vision", "Stripe"],
     category: "SaaS",
     lead: ["N"],
-    link: "https://zedi.sneeks.ai"
+    link: "https://zedi.dev"
   },
   {
     id: "flora",
     title: "Flora",
-    description: "Year-long senior capstone with Bloomfilter: HCI research and design for AI-agent integration inside project-management software — an assistant that lives in the PM tool rather than beside it. Won Best in Lab at Cal Poly's senior project expo.",
+    description: "Year-long senior capstone with Bloomfilter: HCI research and design for AI-agent integration inside project-management software (an assistant that lives in the PM tool rather than beside it). Won Best in Lab at Cal Poly's senior project expo.",
     technologies: ["AI Agents", "HCI Research", "User Research"],
     category: "AI Agent",
     lead: ["N"],
@@ -174,11 +174,11 @@ export const projects: Project[] = [
   {
     id: "homelab",
     title: "HomeLab",
-    description: "A self-hosted environment spanning 12+ services: pfSense networking, Proxmox virtualization, ClickHouse + Grafana observability, containerized services, and ZFS mirrored storage.",
-    technologies: ["Proxmox", "pfSense", "ClickHouse", "Grafana", "Docker", "ZFS"],
+    description: "A single-node Proxmox lab on ZFS mirrored storage: n8n for scheduled automation, a ClickHouse metrics warehouse with an outside-in Cloudflare heartbeat, verified backups, local AI OCR on a GPU, and private remote access over Tailscale.",
+    technologies: ["Proxmox", "ClickHouse", "n8n", "Tailscale", "Cloudflare", "ZFS"],
     category: "Infrastructure",
     lead: ["N"],
-    status: "Re-racking in San Diego"
+    status: "Online in San Diego since Aug 2026"
   },
   {
     id: "bandit",
@@ -202,7 +202,7 @@ export const projects: Project[] = [
     id: "anthony-portfolio",
     title: "anthony.diferdinando.com",
     description: "The third brother gets a site too: Anthony's mechanical-engineering portfolio, designed and built by Nicolo.",
-    technologies: ["Next.js", "Design"],
+    technologies: ["React + Vite", "Design"],
     category: "Design / Build",
     lead: ["N"],
     link: "https://anthony.diferdinando.com"

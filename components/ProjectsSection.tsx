@@ -79,8 +79,8 @@ const ProjectsSection = () => {
             </h2>
             <p className="mt-4 max-w-2xl text-graphite">
               Each entry is marked with who drew it:{' '}
-              <span className="font-mono text-xs text-redline">N</span> — Nicolo,{' '}
-              <span className="font-mono text-xs text-blueline">D</span> — Donato.
+              <span className="font-mono text-xs text-redline">N</span>: Nicolo,{' '}
+              <span className="font-mono text-xs text-blueline">D</span>: Donato.
             </p>
           </motion.div>
 
