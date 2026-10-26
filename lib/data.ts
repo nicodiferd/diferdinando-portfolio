@@ -84,7 +84,7 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/nicolo-diferdinando/",
     github: "https://github.com/nicodiferd",
     website: "https://nicolod.org",
-    certifications: ["CompTIA Security+", "Splunk Certified", "SQL Database Implementation"]
+    certifications: ["SQL Database Implementation"]
   },
   {
     name: "Donato DiFerdinando",
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     description: "A full-stack personal finance platform with AI-powered receipt scanning, multi-tenant accounts, and subscription billing, built end-to-end and shipped to production.",
     technologies: ["Rust / Axum", "Next.js", "TypeScript", "PostgreSQL", "Claude Vision OCR", "Stripe", "Railway"],
     category: "web",
-    link: "https://zedi.sneeks.ai"
+    link: "https://zedi.dev"
   },
   {
     id: "semantic-layer-service",
