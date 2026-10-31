@@ -50,7 +50,7 @@ The full list is `app/lab/_kit/README.md`; `node scripts/check-lab.mjs` enforces
 
 ## How cards and sections are judged
 
-The owner picks, per tag. To help, each section is scored 1 to 10 on five lenses:
+The owner picks, per tag, against five lenses (suggested picks below):
 
 1. **Five-second clarity**: does a stranger get who these two are and what they build?
 2. **Proof**: numbers carry their context, links are one tap away, credit is honest and visible.
@@ -73,6 +73,27 @@ The final page uses one type and color system: picking a card from variant 5 and
 3. Photos: the two headshots in `lib/` came with the 2025 site. Keep, replace or drop?
 4. Preview builds: see the preview section below.
 
+## Suggested picks (lab runner, 2026-10-30)
+
+Every variant was checked on localhost in the in-app browser at 1440px and 375px, light and dark: all ten sections tagged, one `h1`, no horizontal scroll, no dashes in the rendered text, `check-lab`, `tsc` and the static export clean. A suggestion per section, for the owner to overrule:
+
+| Tag | Suggest | Why | Runner-up |
+|---|---|---|---|
+| A Header | 1A | quiet, scannable, email always visible | 4A masthead, if the page goes editorial |
+| B Hero | 2B | two faces, two names, one line: who and what in five seconds | 6B, the two-lines drawing |
+| C Brothers | 1C | key/value rows read fastest and compare the two side by side | 4C with the 4K fact box |
+| D Featured work | 2K for the shared card, 1K rows for the rest | the seam card makes shared credit visible; the rows carry credit and metric columns | 5D bento tiles |
+| E More work | 1E | compact index, nothing competes with D | 4E "In brief" |
+| F Numbers | 6F | four marked numerals, each with its credit line | 5F color tiles |
+| G Areas | 1G | numbered grid with proof under each area | 2G |
+| H Timeline | 2H | two lanes, one per brother, easiest to read | 3H git-log graph, the most distinctive |
+| I Contact | 2I | the two colors meeting at one email | 1I giant email |
+| J Footer | 1J | | |
+
+Known lab-only details: Metric Layer's pending note is visible on variants 1 to 5 (dropped in the final page); variant 5's numerals had their tracking opened so "~1B" reads.
+
 ## Preview
 
-Branch `lab/redesign-2026-10`. Preview URLs are added here once deployed.
+Branch `lab/redesign-2026-10` (pushed 2026-10-30). Preview: https://lab-redesign-2026-10.diferdinando-portfolio.pages.dev/lab, variants at `/lab/1` to `/lab/6` (robots noindex).
+
+The Pages Git integration did not build the pushed branch: no check run on the commit and no deployment several minutes after the push (nothing has built from Git since 2025-07-14). So the preview was uploaded directly: `npm run build`, then `wrangler pages deploy out --project-name diferdinando-portfolio --branch lab-redesign-2026-10`, with a `_redirects` added to the upload only (`/` to `/lab`) so the preview does not serve this branch's old home page. Git previews come back once the owner reconnects the GitHub integration in the Cloudflare dashboard (Workers & Pages, diferdinando-portfolio, Settings, Builds); check there that the root directory is empty (the app is at the repo root; `cloudflare.md` still says `diferdinando-portfolio`), the build command is `npm run build` and the output directory is `out`.
