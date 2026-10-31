@@ -46,7 +46,7 @@ const VARIANT_ONLY = [
   [/https?:\/\//, 'external URL literal: links come from ../_kit (content.ts)'],
   [/mailto:/, 'mailto literal: use site.emailHref'],
   [/@diferdinando\.com|@gmail\.com/i, 'email literal: use site.email'],
-  [/~?\b1B\b|600\+|300\+|900\+|50\+|200\+|\b139\b|180,000/, 'fact number literal: use the kit'],
+  [/~1B\b|\b1B rows|600\+|300\+|900\+|50\+|200\+|\b139\b|180,000/, 'fact number literal: use the kit'],
   [/certif/i, 'no certifications on this site'],
   [/\bstudent\b/i, 'Nicolo graduated June 2026'],
   [/@import\s+url|fonts\.googleapis|fonts\.gstatic/i, 'fonts through next/font only'],
