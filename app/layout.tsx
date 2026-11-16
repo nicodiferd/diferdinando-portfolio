@@ -1,61 +1,54 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next';
+import { THEME_COLOR, THEME_INIT } from '@/components/site/theme';
+import { site } from '@/lib/content';
+import './globals.css';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const siteTitle = "DiFerdinando Brothers | Software, Data & Security Engineering";
-const siteDescription =
-  "Two engineers who design and ship production-grade software, data platforms, and security automation: full-stack apps, Snowflake/dbt pipelines, analytics, AI, and cloud infrastructure.";
+const ogImage = {
+  url: '/og.png',
+  width: 1200,
+  height: 630,
+  alt: `${site.name}: ${site.headline}`,
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://diferdinando.com'),
-  title: siteTitle,
-  description: siteDescription,
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  alternates: { canonical: site.url },
   openGraph: {
-    title: siteTitle,
-    description: siteDescription,
-    url: 'https://diferdinando.com',
-    siteName: 'DiFerdinando Brothers',
+    title: site.title,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: '/og.png',
-        width: 1200,
-        height: 630,
-        alt: 'DiFerdinando Brothers | Software, Data & Security Engineering',
-      },
-    ],
+    images: [ogImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: siteTitle,
-    description: siteDescription,
-    images: ['/og.png'],
+    title: site.title,
+    description: site.description,
+    images: [ogImage.url],
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+// The browser bar follows the system; when a visitor picks Light or Dark in
+// the footer, the theme script points both tags at that color.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: THEME_COLOR.light },
+    { media: '(prefers-color-scheme: dark)', color: THEME_COLOR.dark },
+  ],
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <head>
+        {/* Sets html[data-theme] before the first paint, so there is no flash. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,5 +1,7 @@
 # diferdinando.com redesign lab (2026-10-30)
 
+> **Round 3 (2026-11-07): the lab is closed.** Owner: "I want to use lab 2 ... as the base. Then we can change copy as we deem necessary." Variant 2 (Two Halves) is now the whole home page (`components/site/`, facts in `lib/content.ts`); `app/lab`, the lab bar, the tags and the old components are gone, and `scripts/check-lab.mjs` became `scripts/check-site.mjs`, which scans the built `out/`. Preview: https://round-3.diferdinando-portfolio.pages.dev. The rest of this file is the record of the lab as it ran; paths under `app/lab` no longer exist.
+
 Owner, 2026-10-30: not a fan of any current version (live, `fix/nicolo-facts-2026-10`, `redesign/drafting-sheet`). Live is a build from before July 2025 that still lists certifications Nicolo does not hold. So instead of fixing either branch, a lab: six genuinely different full-page drafts of the home page on the same facts, side by side at `/lab/1` to `/lab/6` on a Pages preview; the owner names the sections and cards to keep; the final home page is assembled from those picks on this branch. Neither old branch's design is a starting point; their `lib/data.ts` was read for content only.
 
 ## The site's job
