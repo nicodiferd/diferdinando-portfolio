@@ -376,9 +376,10 @@ export const projects: readonly Project[] = [
     stack: ['Python', 'DuckDB', 'LightGBM', 'Statcast'],
     featured: true,
   },
-  // From zedi.dev (2026-11-07). Rules (zedi public-facts.yaml): bank sync
-  // always comes with SimpleFIN's own fee; never Investments; never "run by
-  // one person"; never "nothing counted twice". zedi.dev: "450+ default
+  // From zedi.dev (pricing re-read 2026-11-15: Pro $5 a month or $48 a year,
+  // bank sync through Plaid included in Pro, no second bill). Rules (zedi
+  // public-facts.yaml): never Investments; never "run by one person"; never
+  // "nothing counted twice". zedi.dev: "450+ default
   // merchant and keyword rules", "your fixes can become rules".
   {
     id: 'zedi',
@@ -388,9 +389,9 @@ export const projects: readonly Project[] = [
     creditLine: 'Nicolo',
     summary: 'A personal finance web app that puts your checking, cards, Venmo and receipts in one place.',
     body:
-      'Upload the statements your bank already gives you, or turn on read-only bank sync on Pro, and Zedi sorts your transactions with 450+ built-in rules plus the fixes you make, and reads receipts line by line. A People tab keeps a running balance with everyone you split costs with, and Analytics shows income, spending and your savings rate for any dates.',
+      'Upload the statements your bank already gives you, or turn on read-only bank sync through Plaid on Pro, and Zedi sorts your transactions with 450+ built-in rules plus the fixes you make, and reads receipts line by line. A People tab keeps a running balance with everyone you split costs with, and Analytics shows income, spending and your savings rate for any dates.',
     detail:
-      'Free to start; Pro is $3.50 a month or $30 a year. Bank sync also needs SimpleFIN, which bills its own $1.50 a month or $15 a year, plus tax.',
+      'Free to start; Pro is $5 a month or $48 a year and includes bank sync and unlimited receipt scans, with a 30-day free trial.',
     metric: { value: 'Oct 2026', label: 'live at zedi.dev' },
     stack: ['Rust / Axum', 'Next.js', 'TypeScript', 'PostgreSQL', 'Claude Vision', 'Stripe'],
     links: [{ label: 'zedi.dev', href: 'https://zedi.dev' }],
